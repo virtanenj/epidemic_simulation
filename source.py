@@ -19,20 +19,6 @@ from scipy.spatial.distance import squareform
 # The model is (to be) based on (pandas dataframe or numpy 
 # multidimensional arrays?).
 
-# Necessary??
-class Agent:
-    def __init__(self, id, SIR='susceptible', age=None, home=None):
-        self.id = id
-        # Assume SIR-model (susceptible, infectious or removed*)
-        # *I prefer 'removed' rather than 'recovered' as that should 
-        # describe both death and actually recovered.
-        self.SIR = SIR
-        self.age = age
-        # Consider some description of individuals community.
-        # How could this be generalized such that the model for work
-        # home, hobby and so on doesn't have to be hardcoded?
-        self.home = home
-
 
 def init_population(population_size, box=(0,0,10,10)):
     ''' box=(min x-value, min y-value, max x-value, max y-value) '''
@@ -77,43 +63,3 @@ def run_simulation(init_population, box, time_steps):
         print(distance_matrix)
     return space_array
 
-
-population_size = 5
-time_steps = 2
-
-df, box = init_population(population_size)
-
-a = run_simulation(df, box, time_steps)
-
-
-# import matplotlib.pyplot as plt
-
-# for i in range(a.shape[1]):
-#     some_dude = a[:,i,:]
-#     # if i==0:
-#     #     plt.plot(some_dude[:,0], some_dude[:,1], 'red')
-#     # else:
-#     #     plt.plot(some_dude[:,0], some_dude[:,1], '.', color='gray')
-#     plt.plot(some_dude[:,0], some_dude[:,1], '.')
-# plt.show()
-
-# b = np.arange(12).reshape(6,2)
-# print(b[0,:])
-# for i in range(b.shape[0]):
-#     xy_i = b[i,:]
-#     for j in range(i+1,b.shape[0]):
-#         xy_j = b[j,:]
-#         d = np.linalg.norm(xy_i - xy_j)
-#         print('i='+str(i)+', j='+str(j)+', d='+str(d))
-
-# einsum = np.einsum('ij,ij->', b,b)
-# print(einsum)
-
-
-# condensed_distance_matrix = pdist(b)
-# distance_matrix = squareform(pdist(b))
-# print(condensed_distance_matrix)
-# print(distance_matrix)
-
-# Distance for example between indexes 2 and 5
-# print(distance_matrix[2,5])
