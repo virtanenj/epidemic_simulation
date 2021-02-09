@@ -1,4 +1,4 @@
-# Toy model for studying epidemics
+# Toy model for studying epidemics (work in progress)
 
 Mainly intuition based model for simulating epidemics with following functions:
 - Random walk: model the movement of each individual
